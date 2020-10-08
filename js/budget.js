@@ -10,7 +10,7 @@ const form = document.querySelector('form');
         let t = 0;
 form.addEventListener('submit', function (event) {
     totalDiv.style.display = 'flex';
-    const x = +inputBudget.value + parseInt(0);
+    const x = inputBudget.value;
     y = inputItem.value;
     n = document.createElement('span');
     n.innerHTML = '&#8358;';
@@ -47,18 +47,20 @@ form.addEventListener('submit', function (event) {
     deleteButtonI.setAttribute('class', 'fa fa-trash');
     cellDelete.appendChild(deleteButton);
     deleteButton.appendChild(deleteButtonI);
+    cellBudgetInput.type = 'number';
     cellBudgetInput.value = x;
     cellItemInput.value = y;
     tableBody.appendChild(tableRow);
     event.preventDefault();
     inputItem.value = '';
     inputBudget.value = '';
+    let s = cellBudgetInput.value;
     deleteButton.addEventListener('click', function (event) {
         deleteButton.parentNode.parentNode.remove();
         if (tableBody.hasChildNodes()) {
             totalDiv.style.display = 'flex';
         } else {
-            t = t - t;
+            t = 0;
             totalDiv.style.display = 'none';
         }
     })
@@ -72,9 +74,13 @@ form.addEventListener('submit', function (event) {
         } else {
             editButtonI.setAttribute('class', 'fa fa-pencil-square-o');
             i = 0;
+            t = +t - parseInt(s);
+            s = cellBudgetInput.value;
+        t = +t + parseInt(s);
         }
+        totalInput.value = n.innerHTML + t;
     })
-    t = +t + x;
+    t = t + parseInt(s);
     totalInput.value = n.innerHTML + t;
 })
 clearBtn.addEventListener('click', function (event) {
@@ -82,7 +88,7 @@ clearBtn.addEventListener('click', function (event) {
         tableBody.removeChild(tableBody.childNodes[0]);
         // console.log('working')
     } 
-    t = t - t;
+    t = 0;
     totalDiv.style.display = 'none';
     
 })
