@@ -1,0 +1,137 @@
+:root {
+    --font-family: 'Comic Neue', cursive;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+/* font-family: 'Tillana', cursive; */
+body {
+    background-color: var(--primary);
+    color: var(--txt-color);
+    font-family: var(--font-family);
+}
+h1 {
+    text-align: center;
+    margin: 30px;
+}
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 10px;
+}
+.add-item-div {
+    background-color: var(--sec);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.add-item-div label {
+    padding: 10px 5px;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.input-label {
+    width: 100%;
+}
+.btn-label span {
+    width: 90px;
+}
+.add-item-div input {
+    margin-left: 5px;
+    padding: 7px 5px;
+    width: 100%;
+    border: 1px solid var(--spare);
+}
+.add-item-div button {
+    padding: 7px 15px;
+}
+input::placeholder {
+    color: var(--txt-color);
+}
+input {
+    background-color: transparent;
+    border-radius: 5px;
+    color: var(--txt-color);
+    font-size: 18px;
+}
+table {
+    background-color: var(--sec);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-collapse: collapse;
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+    overflow: scroll;
+}
+table button {
+    background-color: transparent;
+    color: var(--txt-color);
+    outline: none;
+    border: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+td,
+th {
+    border: 1px solid var(--spare);
+    padding: 5px;
+    font-size: 18px;
+    color: var(--txt-color);
+}
+.budget-input {
+    border: none;
+    outline: none;
+    font-size: 18px;
+}
+.budget-item-input {
+    max-width: 100px;
+    text-align: center;
+}
+.budget-cell-input {
+    width: 25px;
+}
+.total-div {
+    font-size: 18px;
+    font-weight: bold;
+    align-items: center;
+    display: none;
+    justify-content: space-evenly;
+}
+label {
+    padding: 10px 5px;
+    display: flex;
+    align-items: center;
+}
+.total-div input {
+    border: 1px solid var(--spare);
+    padding: 5px 5px;
+    font-size: 18px;
+}
+.total-div button {
+    padding: 5px 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+@media (max-width: 550px) {
+    .total-div label,
+    .total-div input {
+        display: block;
+    }
+    .add-item-div {
+        padding: 5px;
+        flex-direction: column;
+    }
+    .total-div {
+        flex-direction: column;
+    }
+}

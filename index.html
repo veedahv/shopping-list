@@ -4,186 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/default.css" id="link">    
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap"
-        rel="stylesheet">
-    <title>Document</title>
-    <style>
-        :root {
-            --primary: #026873;
-            --sec: #038C8C;
-            --spare: #A68B03;
-        }
-
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-            font-family: 'Source Sans Pro', sans-serif;
-        }
-
-        body {
-            background-color: var(--primary);
-            color: #ffffff;
-        }
-
-        h1 {
-            text-align: center;
-            margin: 30px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 10px;
-        }
-
-        .add-item-div {
-            background-color: var(--sec);
-            /* border: 1px solid #000000; */
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .add-item-div label {
-            padding: 10px 5px;
-            /* width: 100%; */
-            font-size: 18px;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .input-label {
-            /* padding: 10px 5px; */
-            width: 100%;
-        }
-
-        /* .btn-label {
-            display: flex;
-        } */
-
-        .btn-label span {
-            width: 80px;
-        }
-
-        .add-item-div input {
-            margin-left: 5px;
-            padding: 7px 5px;
-            width: 100%;
-            border: 1px solid #000000;
-        }
-
-        .add-item-div button {
-            padding: 7px 15px;
-        }
-
-        input::placeholder {
-            color: #ffffff;
-        }
-
-        input {
-            background-color: transparent;
-            border-radius: 5px;
-            color: #ffffff;
-            font-size: 18px;
-        }
-
-        table {
-            background-color: var(--sec);
-            margin-top: 30px;
-            margin-bottom: 30px;
-            border-collapse: collapse;
-            font-size: 18px;
-            width: 100%;
-            text-align: center;
-        }
-
-        table button {
-            background-color: transparent;
-            color: #ffffff;
-            outline: none;
-            border: none;
-        }
-
-        /* th {
-            width: 100%;
-        } */
-        td,
-        th {
-            border: 1px solid #000000;
-            padding: 5px;
-            font-size: 18px;
-            color: #ffffff;
-        }
-
-        .budget-input {
-            border: none;
-            outline: none;
-            width: 50px;
-            font-size: 20px;
-        }
-
-        .total-div {
-            /* padding: 10px 5px; */
-            font-size: 18px;
-            font-weight: bold;
-            /* justify-content: space-between; */
-            align-items: center;
-            display: none;
-            justify-content: space-evenly;
-        }
-
-        label {
-            padding: 10px 5px;
-            /* font-size: 18px; */
-            /* font-weight: bold; */
-            display: flex;
-            /* justify-content: space-between; */
-            align-items: center;
-        }
-
-        .total-div input {
-            border: 1px solid #000000;
-            padding: 5px 5px;
-            font-size: 18px;
-            /* font-weight: bold; */
-            /* display: flex; */
-            /* justify-content: space-between; */
-            /* align-items: center; */
-        }
-
-        .total-div button {
-            padding: 5px 15px;
-            font-size: 18px;
-            font-weight: bold;
-            /* display: flex; */
-            /* justify-content: space-between; */
-            /* align-items: center; */
-        }
-
-        /* .budget-input {
-            border: none;
-            outline: none;
-            width: 50px;
-            font-size: 20px;
-        } */
-        @media (max-width: 550px) {
-            .total-div label,
-            .total-div input {
-                display: block;
-            }
-            .add-item-div {
-                padding: 5px;
-                flex-direction: column;
-            }
-            .total-div {
-                flex-direction: column;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Tillana:wght@400;700&display=swap" rel="stylesheet">
+    <title>Shopping List</title>
 </head>
 
 <body>
@@ -194,16 +19,26 @@
     </header>
     <main>
         <div class="container">
+        <div class="bg-mode">
+            <button class="btn" id="btn-default">Default</button>
+            <button class="btn" id="btn-green">Green</button>
+            <button class="btn" id="btn-blue">Blue</button>
+            <button class="btn" id="btn-red">Red</button>
+            <p>
+                Don't like the font?
+                <button id="font-change">Change me 😜😜</button>
+            </p>
+        </div>
             <div>
                 <form>
                     <div class="add-item-div">
                         <label for="item" class="input-label">
                             Item:
-                            <input type="text" name="itemList" id="item" placeholder="Input item" required>
+                            <input type="text" name="itemList" id="item" placeholder="Input item" value="money" required>
                         </label>
                         <label for="budget" class="input-label">
                             Budget:
-                            <input type="number" name="itemList" id="budget" placeholder="Input amount in figures" required>
+                            <input type="number" name="itemList" id="budget" placeholder="Input amount in figures" value="10" required>
                         </label>
                         <label for="addItemButton" class="btn-label">
                             <span>Add Item</span>
