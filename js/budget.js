@@ -159,8 +159,8 @@ form.addEventListener('submit', function (event) {
     totalDiv.style.display = 'flex';
     newRow();
     event.preventDefault();
-    // inputItem.value = '';
-    // inputBudget.value = '';
+    inputItem.value = '';
+    inputBudget.value = '';
 })
 clearBtn.addEventListener('click', function (event) {
     while (tableBody.hasChildNodes()) {
