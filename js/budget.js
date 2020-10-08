@@ -34,7 +34,7 @@ fontChange.addEventListener('click', function (event) {
 modeBtns.forEach(function (btn) {
     btn.addEventListener('click', function (event) {
         switch (event.target.id) {
-            case 'btn-default': 
+            case 'btn-default':
                 defaultCss.href = 'css/default.css';
                 break;
             case 'btn-green':
@@ -43,10 +43,19 @@ modeBtns.forEach(function (btn) {
             case 'btn-blue':
                 defaultCss.href = 'css/blue.css';
                 break;
-            default: 
+            case 'btn-yellow':
+                defaultCss.href = 'css/yellow.css';
+                break;
+            case 'btn-purple':
+                defaultCss.href = 'css/purple.css';
+                break;
+                case 'btn-red':
+                    defaultCss.href = 'css/red.css';
+                    break;
+            default:
                 defaultCss.href = ''
         }
-    })    
+    })
 })
 
 

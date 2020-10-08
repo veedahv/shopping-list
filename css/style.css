@@ -1,5 +1,17 @@
 :root {
     --font-family: 'Comic Neue', cursive;
+    --green-main: #026873;
+    --green-sec: #038C8C;
+    --blue-main: #0038BA;
+    --blue-sec: #004BFA;
+    --red-main: #891718;
+    --red-sec: #A21C22;
+    --yellow-main: #BF9A2A;
+    --yellow-sec: #F2C029;
+    --purple-main: #613480;
+    --purple-sec: #C169FF;
+    --default-main: #E7E8E7;
+    --default-sec: #FFFFFF ;
 }
 * {
     padding: 0;
@@ -21,6 +33,38 @@ h1 {
     max-width: 800px;
     margin: auto;
     padding: 10px;
+}
+.bg-mode {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.bg-mode .btn {
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+#btn-green {
+    background: linear-gradient(90deg, var(--green-main), var(--green-sec));
+}
+#btn-blue {
+    background: linear-gradient(90deg, var(--blue-main), var(--blue-sec));
+}
+#btn-red {
+    background: linear-gradient(90deg, var(--red-main), var(--red-sec));
+}
+#btn-purple {
+    background: linear-gradient(90deg, var(--purple-main), var(--purple-sec));
+}
+#btn-yellow {
+    background: linear-gradient(90deg, var(--yellow-main), var(--yellow-sec));
+}
+#btn-default {
+    background: linear-gradient(90deg, var(--default-main), var(--default-sec));
+}
+#font-change {
+    background: transparent;
 }
 .add-item-div {
     background-color: var(--sec);
@@ -56,7 +100,7 @@ input::placeholder {
 }
 input {
     background-color: transparent;
-    border-radius: 5px;
+    border-radius: 8px;
     color: var(--txt-color);
     font-size: 18px;
 }
@@ -69,6 +113,7 @@ table {
     width: 100%;
     text-align: center;
     overflow: scroll;
+    border-radius: 10px;
 }
 table button {
     background-color: transparent;
@@ -79,6 +124,9 @@ table button {
 
 button {
     font-family: inherit;
+    border-radius: 8px;
+    border: none;
+    /* color: var(--txt-color); */
 }
 
 td,
