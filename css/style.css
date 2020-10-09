@@ -11,7 +11,9 @@
     --purple-main: #613480;
     --purple-sec: #C169FF;
     --default-main: #E7E8E7;
-    --default-sec: #FFFFFF ;
+    --default-sec: #FFFFFF ;    
+    --dark-main: #212625;
+    --dark-sec: #0C0D0B;
 }
 * {
     padding: 0;
@@ -62,6 +64,9 @@ h1 {
 }
 #btn-default {
     background: linear-gradient(90deg, var(--default-main), var(--default-sec));
+}
+#btn-dark {
+    background: linear-gradient(90deg, var(--dark-main), var(--dark-sec));
 }
 #font-change {
     background: transparent;
@@ -146,7 +151,7 @@ th {
     text-align: center;
 }
 .budget-cell-input {
-    width: 25px;
+    width: 50px;
 }
 .total-div {
     font-size: 18px;

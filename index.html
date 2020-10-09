@@ -20,10 +20,11 @@
         <div class="bg-mode">
             <button class="btn" id="btn-default"></button>
             <button class="btn" id="btn-yellow"></button>
+            <button class="btn" id="btn-red"></button>
             <button class="btn" id="btn-green"></button>
             <button class="btn" id="btn-blue"></button>
-            <button class="btn" id="btn-red"></button>
             <button class="btn" id="btn-purple"></button>
+            <button class="btn" id="btn-dark"></button>
             <p>
                 Don't like the font?
                 <button id="font-change"><u>Change me </u>😜😜 </button>
@@ -57,6 +58,7 @@
                 <table id="budgetTable">
                     <thead>
                         <tr>
+                            <th>S/N</th>
                             <th>Item</th>
                             <th>Budget</th>
                             <th>Edit</th>
@@ -69,7 +71,7 @@
             <div class="total-div">
                 <label for="total">
                     Total estimated budget:
-                    <input type="text" name="total" id="total">
+                    <input type="text" name="total" id="total" readonly>
                 </label>
                 <button id="clear">Clear</button>
             </div>

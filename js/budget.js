@@ -21,7 +21,8 @@ cellItemInput.classList.add('budget-input');
 cellItemInput.classList.add('budget-item-input');
 
 let t = 0,
-    i = 0;
+    i = 0,
+    sN = 1;
 //change font
 fontChange.addEventListener('click', function (event) {
     if (document.body.style[0] === '--font-family') {
@@ -49,9 +50,12 @@ modeBtns.forEach(function (btn) {
             case 'btn-purple':
                 defaultCss.href = 'css/purple.css';
                 break;
-                case 'btn-red':
-                    defaultCss.href = 'css/red.css';
-                    break;
+            case 'btn-red':
+                defaultCss.href = 'css/red.css';
+                break;
+            case 'btn-dark':
+                defaultCss.href = 'css/dark.css';
+                break;
             default:
                 defaultCss.href = ''
         }
@@ -70,6 +74,12 @@ function newRow() {
 
     // new row
     tableRow = document.createElement('tr');
+
+    // sn cell
+    let cellNo = document.createElement('td');
+    tableRow.appendChild(cellNo);
+    cellNo.innerHTML = sN;
+    sN++;
 
     // first cell
     let cellItem = document.createElement('td');
@@ -131,6 +141,7 @@ function newRow() {
         }
         totalInput.value = n.innerHTML + t;
     }
+    // console.log(tableBody.childElementCount);
 
     // function to delete row
     function deleteRow() {
@@ -152,6 +163,13 @@ function newRow() {
     })
     deleteButton.addEventListener('click', function (event) {
         deleteRow();
+        // i = 0;
+        // for (i = 0; i < tableBody.childElementCount; i++) {
+        //     if (sN - 1 !== tableBody.children[i]) {
+        //         sN = sN - 1;
+        //         cellNo.innerHTML = sN;
+        //     }
+        // }
     })
 }
 
