@@ -58,7 +58,7 @@
                 <table id="budgetTable">
                     <thead>
                         <tr>
-                            <th>S/N</th>
+                            <!-- <th>S/N</th> -->
                             <th>Item</th>
                             <th>Budget</th>
                             <th>Edit</th>
@@ -69,8 +69,12 @@
                 </table>
             </div>
             <div class="total-div">
+                <label for="totalItems" id="total-items-label">
+                    No. of items:
+                    <input type="text" name="totalItems" id="total-items" readonly>
+                </label>
                 <label for="total">
-                    Total estimated budget:
+                    Estimated budget:
                     <input type="text" name="total" id="total" readonly>
                 </label>
                 <button id="clear">Clear</button>

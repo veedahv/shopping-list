@@ -70,12 +70,15 @@ h1 {
 }
 #font-change {
     background: transparent;
+    outline: none;
+    border: none;
 }
 .add-item-div {
     background-color: var(--sec);
     padding: 10px;
     display: flex;
     justify-content: space-between;
+    border-radius: 10px;
 }
 .add-item-div label {
     padding: 10px 5px;
@@ -102,6 +105,7 @@ h1 {
 }
 input::placeholder {
     color: var(--txt-color);
+    opacity: 0.8;
 }
 input {
     background-color: transparent;
@@ -118,7 +122,6 @@ table {
     width: 100%;
     text-align: center;
     overflow: scroll;
-    border-radius: 10px;
 }
 table button {
     background-color: transparent;
@@ -132,6 +135,9 @@ button {
     border-radius: 8px;
     border: none;
     /* color: var(--txt-color); */
+}
+input {
+    font-family: inherit;
 }
 
 td,
@@ -170,6 +176,9 @@ label {
     padding: 5px 5px;
     font-size: 18px;
 }
+#total-items {
+    width: 50px;
+}
 .total-div button {
     padding: 5px 15px;
     font-size: 18px;
@@ -179,6 +188,7 @@ label {
     .total-div label,
     .total-div input {
         display: block;
+        /* width: 100%; */
     }
     .add-item-div {
         padding: 5px;
@@ -186,5 +196,17 @@ label {
     }
     .total-div {
         flex-direction: column;
+    }
+    #total-items-label {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    #total-items-label #total-items  {
+        margin-left: 20px;
+    }
+}
+@media (min-width: 551px) {
+    #total-items-label #total-items  {
+        margin-left: 10px;
     }
 }

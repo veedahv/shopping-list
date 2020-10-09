@@ -4,10 +4,12 @@ const form = document.querySelector('form'),
     inputItem = document.querySelector('#item'),
     inputBudget = document.getElementById('budget'),
     sumbitItem = document.getElementById(submit),
+    formBody = document.querySelector('.add-item-div'),
     table = document.querySelector('table'),
     tableBody = document.querySelector('tbody'),
     clearBtn = document.getElementById('clear'),
     totalInput = document.getElementById('total'),
+    totalItems = document.getElementById('total-items'),
     totalDiv = document.querySelector('.total-div'),
     cellItemInput = document.createElement('input'),
     modeBtns = document.querySelectorAll('.btn'),
@@ -59,6 +61,9 @@ modeBtns.forEach(function (btn) {
             default:
                 defaultCss.href = ''
         }
+        document.body.style.transition = "all 1s";
+        formBody.style.transition = "all 1s";
+        table.style.transition = "all 1s";
     })
 })
 
@@ -76,10 +81,10 @@ function newRow() {
     tableRow = document.createElement('tr');
 
     // sn cell
-    let cellNo = document.createElement('td');
-    tableRow.appendChild(cellNo);
-    cellNo.innerHTML = sN;
-    sN++;
+    // let cellNo = document.createElement('td');
+    // tableRow.appendChild(cellNo);
+    // cellNo.innerHTML = sN;
+    // sN++;
 
     // first cell
     let cellItem = document.createElement('td');
@@ -89,12 +94,12 @@ function newRow() {
 
     // second cell
     let cellBudget = document.createElement('td');
-    tableRow.appendChild(cellBudget);
     let cellBudgetInput = document.createElement('input');
     cellBudgetInput.classList.add('budget-input');
     cellBudgetInput.classList.add('budget-cell-input');
     cellBudget.appendChild(n);
     cellBudget.appendChild(cellBudgetInput);
+    tableRow.appendChild(cellBudget);
 
     // third cell
     let cellEdit = document.createElement('td');
@@ -163,19 +168,16 @@ function newRow() {
     })
     deleteButton.addEventListener('click', function (event) {
         deleteRow();
-        // i = 0;
-        // for (i = 0; i < tableBody.childElementCount; i++) {
-        //     if (sN - 1 !== tableBody.children[i]) {
-        //         sN = sN - 1;
-        //         cellNo.innerHTML = sN;
-        //     }
-        // }
+        sN = tableBody.childElementCount;
+        totalItems.value = sN;
     })
 }
 
 form.addEventListener('submit', function (event) {
-    totalDiv.style.display = 'flex';
     newRow();
+    totalDiv.style.display = 'flex';
+    sN = tableBody.childElementCount;
+    totalItems.value = sN;
     event.preventDefault();
     inputItem.value = '';
     inputBudget.value = '';
