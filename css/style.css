@@ -72,6 +72,7 @@ h1 {
     background: transparent;
     outline: none;
     border: none;
+    color:  var(--txt-color);
 }
 .add-item-div {
     background-color: var(--sec);
