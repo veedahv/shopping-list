@@ -106,13 +106,14 @@ h1 {
 }
 input::placeholder {
     color: var(--txt-color);
-    opacity: 0.8;
+    opacity: 0.7;
 }
 input {
     background-color: transparent;
     border-radius: 8px;
     color: var(--txt-color);
     font-size: 18px;
+    font-family: inherit;
 }
 table {
     background-color: var(--sec);
@@ -136,9 +137,6 @@ button {
     border-radius: 8px;
     border: none;
     /* color: var(--txt-color); */
-}
-input {
-    font-family: inherit;
 }
 
 td,
@@ -177,6 +175,7 @@ label {
     padding: 5px 10px;
     letter-spacing: 1px;
     font-size: 18px;
+    background-color: var(--sec);
 }
 #total-items {
     width: 50px;
