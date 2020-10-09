@@ -174,13 +174,16 @@ label {
 }
 .total-div input {
     border: 1px solid var(--spare);
-    padding: 5px 5px;
+    padding: 5px 10px;
+    letter-spacing: 1px;
     font-size: 18px;
 }
 #total-items {
     width: 50px;
 }
 .total-div button {
+    background-color: var(--sec);
+    color: var(--txt-color);
     padding: 5px 15px;
     font-size: 18px;
     font-weight: bold;
