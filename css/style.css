@@ -210,7 +210,7 @@ label {
     }
 }
 @media (min-width: 551px) {
-    #total-items-label #total-items  {
+    .total-div input  {
         margin-left: 10px;
     }
 }
