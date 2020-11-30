@@ -190,8 +190,24 @@ th {
     display: flex;
     justify-content: space-evenly;
 }
+.share-div {
+    font-size: 18px;
+    font-weight: bold;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+.btn {
+    background-color: var(--sec);
+    color: var(--txt-color);
+    padding: 5px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 label {
-    padding: 10px 5px;
+    padding: 5px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
 }
@@ -205,13 +221,18 @@ label {
 #total-items {
     width: 50px;
 }
-.total-div button {
+.fa-whatsapp {
+    color: #25D366;
+    /* color: #ffffff; */
+    /* background-color: #25D366; */
+}
+/* .total-div button {
     background-color: var(--sec);
     color: var(--txt-color);
     padding: 5px 15px;
     font-size: 18px;
     font-weight: bold;
-}
+} */
 @media (max-width: 550px) {
     .total-div label,
     .total-div input {
@@ -231,6 +252,9 @@ label {
     }
     #total-items-label #total-items  {
         margin-left: 20px;
+    }
+    .mobile-none {
+        display: none;
     }
 }
 @media (min-width: 551px) {

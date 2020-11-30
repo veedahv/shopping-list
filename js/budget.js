@@ -9,6 +9,9 @@ const form = document.querySelector('form'),
     table = document.querySelector('table'),
     tableBody = document.querySelector('tbody'),
     clearBtn = document.getElementById('clear'),
+    savePdf = document.getElementById('savePdf'),
+    emailShare = document.getElementById('emailShare'),
+    whatsAppShare = document.getElementById('whatsAppShare'),
     totalInput = document.getElementById('total'),
     totalItems = document.getElementById('total-items'),
     totalDiv = document.querySelector('.total-div-contain'),
@@ -209,24 +212,23 @@ const newTableRow = () => {
 
 
 }
-const printFunc = () => {
-    document.querySelectorAll('.printNot').forEach(printNotElement => {
-        printNotElement.classList.add('print-not-class');        
-    });
-    window.print();
-    // document.querySelectorAll('.printNot').forEach(printNotElement => {
-    //     printNotElement.classList.remove('print-not-class');      
-    // });    
-}
 const printDone = () => {
     document.querySelectorAll('.printNot').forEach(printNotElement => {
         printNotElement.classList.remove('print-not-class');      
     });    
 }
+const printFunc = () => {
+    document.querySelectorAll('.printNot').forEach(printNotElement => {
+        printNotElement.classList.add('print-not-class');        
+    });
+    window.print();
+setTimeout(printDone, 2000);
+}
 // printFunc();
 
-// setTimeout(printDone, 2000);
-
+savePdf.addEventListener('click', printFunc);
+emailShare.addEventListener('click', printFunc);
+whatsAppShare.addEventListener('click', printFunc);
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     newTableRow();
