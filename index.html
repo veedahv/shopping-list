@@ -15,29 +15,39 @@
 </head>
 
 <body>
-    <header>        
-        <div class="container">
+    <header>
+        <div class="container header-contain">
             <h1>Shopping list
                 <i class="fa fa-list-alt"></i>
             </h1>
-            <div class="bg-mode">
-                <button class="btn" id="btn-default"></button>
-                <button class="btn" id="btn-yellow"></button>
-                <button class="btn" id="btn-red"></button>
-                <button class="btn" id="btn-green"></button>
-                <button class="btn" id="btn-blue"></button>
-                <button class="btn" id="btn-purple"></button>
-                <button class="btn" id="btn-dark"></button>
-                <p>
-                    Don't like the font?
-                    <button id="font-change"><u>Change me </u>😜😜 </button>
-                </p>
+            <div class="flex-header printNot">
+                <div class="bg-mode printNot">
+                    <button class="btn" id="btn-default"></button>
+                    <button class="btn" id="btn-yellow"></button>
+                    <button class="btn" id="btn-red"></button>
+                    <button class="btn" id="btn-green"></button>
+                    <button class="btn" id="btn-blue"></button>
+                    <button class="btn" id="btn-purple"></button>
+                    <button class="btn" id="btn-dark"></button>
+                </div>
+                <div class="currency-contain printNot">
+                    <select name="currency" id="select-currency">
+                        <option value="1">&#8358;</option>
+                        <option value="2">&#36;</option>
+                        <option value="3">&euro;</option>
+                        <option value="4">&#163;</option>
+                    </select>
+                </div>
             </div>
+            <p class="printNot font">
+                Don't like the font?
+                <button id="font-change"><u>Change me </u>😜😜 </button>
+            </p>
         </div>
     </header>
     <main>
         <div class="container">
-            <div>
+            <div class="printNot">
                 <form>
                     <div class="add-item-div">
                         <label for="item" class="input-label">
@@ -58,30 +68,32 @@
                     </div>
                 </form>
             </div>
-            <div>
+            <div class="table-contain">
                 <table id="budgetTable">
                     <thead>
                         <tr>
                             <!-- <th>S/N</th> -->
                             <th>Item</th>
                             <th>Budget</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
+                            <th class="printNot">Edit</th>
+                            <th class="printNot">Delete</th>
                         </tr>
                     </thead>
                     <tbody id="table-body"></tbody>
                 </table>
             </div>
-            <div class="total-div">
-                <label for="totalItems" id="total-items-label">
-                    No. of items:
-                    <input type="text" name="totalItems" id="total-items" readonly>
-                </label>
-                <label for="total">
-                    Estimated budget:
-                    <input type="text" name="total" id="total" readonly>
-                </label>
-                <button id="clear">Clear</button>
+            <div class="total-div-contain">
+                <div class="total-div">
+                    <label for="totalItems" id="total-items-label">
+                        No. of items:
+                        <input type="text" name="totalItems" id="total-items" readonly>
+                    </label>
+                    <label for="total">
+                        Estimated budget:
+                        <input type="text" name="total" id="total" readonly>
+                    </label>
+                    <button id="clear" class="printNot">Clear</button>
+                </div>
             </div>
         </div>
     </main>

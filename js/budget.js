@@ -3,14 +3,15 @@
 const form = document.querySelector('form'),
     inputItem = document.querySelector('#item'),
     inputBudget = document.getElementById('budget'),
-    sumbitItem = document.getElementById(submit),
+    sumbitItem = document.getElementById('submit'),
     formBody = document.querySelector('.add-item-div'),
+    currency = document.createElement('span'),
     table = document.querySelector('table'),
     tableBody = document.querySelector('tbody'),
     clearBtn = document.getElementById('clear'),
     totalInput = document.getElementById('total'),
     totalItems = document.getElementById('total-items'),
-    totalDiv = document.querySelector('.total-div'),
+    totalDiv = document.querySelector('.total-div-contain'),
     cellItemInput = document.createElement('input'),
     modeBtns = document.querySelectorAll('.btn'),
     defaultCss = document.querySelector('#link'),
@@ -21,9 +22,15 @@ const form = document.querySelector('form'),
 let budgetArr = [],
  t = 0,
     i = 0,
-    sN = 1,
-    n = document.createElement('span');
-n.innerHTML = '&#8358;';
+    sN = 1;
+currency.innerHTML = '&#8358;';
+// currency.innerHTML = '&#36;';
+// currency.innerHTML = '&#euro;';
+// currency.innerHTML = '&#163;';
+
+// currency.innerHTML = '&#65505;';
+
+
 if (savedBudgetArr) {
     savedBudgetArr.forEach((savedBudgetArrItem) => {
         budgetArr.push(savedBudgetArrItem)
@@ -72,17 +79,19 @@ const createNewTableRow = (name, price) => {
         <p class="item-name">${name}</p>
         <input class="change-item" type="text" value="${name}">
     </td>
-    <td>
-        <span>₦</span>
-        <span class="item-budget">${price}</span>
-        <input class="budget-input change-budget" type="number" value="${price}">
+    <td class="">
+        <span class="flex">
+            ${currency.innerHTML}
+            <span class="item-budget ml">${price}</span>
+            <input class="budget-input ml change-budget" type="number" value="${price}">
+        </span> 
     </td>
-    <td>
+    <td class="printNot">
         <button class="edit-btn">
             <i class="fa fa-pencil-square-o"></i>
         </button>
     </td>
-    <td>
+    <td class="printNot">
         <button class="delete-btn">
             <i class="fa fa-trash"></i>
         </button>
@@ -96,7 +105,7 @@ const createNewTableRow = (name, price) => {
         inputBudget.value = '';
         tableBody.innerHTML += newRow;
         t = t + parseInt(price);
-        totalInput.value = n.innerHTML + t;
+        totalInput.value = currency.innerHTML + t;
         sN = tableBody.childElementCount;
         if (sN !== 0) {
             totalDiv.style.display = 'flex';
@@ -139,7 +148,7 @@ const createNewTableRow = (name, price) => {
                 }
             })
         }
-        totalInput.value = n.innerHTML + t;
+        totalInput.value = currency.innerHTML + t;
     }
 
     // function to delete row
@@ -160,7 +169,7 @@ const createNewTableRow = (name, price) => {
             t = 0;
             totalDiv.style.display = 'none';
         }
-        totalInput.value = n.innerHTML + t;
+        totalInput.value = currency.innerHTML + t;
     }
     const editBtns = tableBody.querySelectorAll('.edit-btn'),
         deleteBtns = tableBody.querySelectorAll('.delete-btn');
@@ -200,6 +209,24 @@ const newTableRow = () => {
 
 
 }
+const printFunc = () => {
+    document.querySelectorAll('.printNot').forEach(printNotElement => {
+        printNotElement.classList.add('print-not-class');        
+    });
+    window.print();
+    // document.querySelectorAll('.printNot').forEach(printNotElement => {
+    //     printNotElement.classList.remove('print-not-class');      
+    // });    
+}
+const printDone = () => {
+    document.querySelectorAll('.printNot').forEach(printNotElement => {
+        printNotElement.classList.remove('print-not-class');      
+    });    
+}
+// printFunc();
+
+// setTimeout(printDone, 2000);
+
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     newTableRow();

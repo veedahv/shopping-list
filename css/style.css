@@ -32,14 +32,32 @@ h1 {
     text-align: center;
     margin: 30px;
 }
+.flex {
+    display: flex;
+    justify-content: center;
+}
+.ml {
+    margin-left: 2px;
+}
+.print-not-class {
+    display: none;
+}
 .container {
     max-width: 800px;
     margin: auto;
     padding: 10px;
 }
+.font {
+    margin-bottom: 15px;
+}
+.flex-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .bg-mode {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 .bg-mode .btn {
     border: none;
@@ -117,6 +135,10 @@ input {
     font-size: 18px;
     font-family: inherit;
 }
+.table-contain {
+    width: 100%;
+    overflow-x: scroll;
+}
 table {
     background-color: var(--sec);
     margin-top: 30px;
@@ -125,7 +147,6 @@ table {
     font-size: 18px;
     width: 100%;
     text-align: center;
-    overflow: scroll;
     transition: all ease-in-out 1s;
 }
 table button {
@@ -158,11 +179,15 @@ th {
     border-bottom: 1px solid var(--spare);
 }
 
+.total-div-contain {
+    display: none;
+    flex-direction: column;
+}
 .total-div {
     font-size: 18px;
     font-weight: bold;
     align-items: center;
-    display: none;
+    display: flex;
     justify-content: space-evenly;
 }
 label {
