@@ -14,28 +14,29 @@ const form = document.querySelector('form'),
     cellItemInput = document.createElement('input'),
     modeBtns = document.querySelectorAll('.btn'),
     defaultCss = document.querySelector('#link'),
-    fontChange = document.querySelector('#font-change');
+    fontChange = document.querySelector('#font-change'),
+    savedBudgetArr = JSON.parse(localStorage.getItem('budgetItemsArr'));
 
 
-
-
-cellItemInput.classList.add('budget-input');
-cellItemInput.classList.add('budget-item-input');
-
-let t = 0,
+let budgetArr = [],
+ t = 0,
     i = 0,
-    sN = 1;
+    sN = 1,
+    n = document.createElement('span');
+n.innerHTML = '&#8358;';
+if (savedBudgetArr) {
+    savedBudgetArr.forEach((savedBudgetArrItem) => {
+        budgetArr.push(savedBudgetArrItem)
+    })
+    localStorage.setItem('budgetItemsArr', JSON.stringify(budgetArr));
+}
 //change font
-fontChange.addEventListener('click', function (event) {
-    if (document.body.style[0] === '--font-family') {
-        document.body.removeAttribute('style')
-    } else {
-        document.body.setAttribute('style', "--font-family: 'Tillana', cursive")
-    }
+fontChange.addEventListener('click', (event) => {
+(document.body.style[0] === '--font-family') ? document.body.removeAttribute('style') : document.body.setAttribute('style', "--font-family: 'Tillana', cursive");
 })
 // change to default mode
 modeBtns.forEach(function (btn) {
-    btn.addEventListener('click', function (event) {
+    btn.addEventListener('click', (event) => {
         switch (event.target.id) {
             case 'btn-default':
                 defaultCss.href = 'css/default.css';
@@ -61,98 +62,98 @@ modeBtns.forEach(function (btn) {
             default:
                 defaultCss.href = ''
         }
-        document.body.style.transition = "all 1s";
-        formBody.style.transition = "all 1s";
-        table.style.transition = "all 1s";
     })
 })
 
+const createNewTableRow = (name, price) => {
 
+    let newRow = `<tr class="table-row">
+    <td>
+        <p class="item-name">${name}</p>
+        <input class="change-item" type="text" value="${name}">
+    </td>
+    <td>
+        <span>₦</span>
+        <span class="item-budget">${price}</span>
+        <input class="budget-input change-budget" type="number" value="${price}">
+    </td>
+    <td>
+        <button class="edit-btn">
+            <i class="fa fa-pencil-square-o"></i>
+        </button>
+    </td>
+    <td>
+        <button class="delete-btn">
+            <i class="fa fa-trash"></i>
+        </button>
+    </td>
+</tr>`
 
-function newRow() {
-    let x = inputBudget.value,
-        y = inputItem.value,
-        n = document.createElement('span');
-    n.innerHTML = '&#8358;';
-    firstLetter = y[0].toUpperCase();
-    smallLetters = y.slice(1);
-
-    // new row
-    tableRow = document.createElement('tr');
-
-    // sn cell
-    // let cellNo = document.createElement('td');
-    // tableRow.appendChild(cellNo);
-    // cellNo.innerHTML = sN;
-    // sN++;
-
-    // first cell
-    let cellItem = document.createElement('td');
-    let cellItemP = document.createElement('p');
-    cellItem.appendChild(cellItemP);
-    tableRow.appendChild(cellItem);
-
-    // second cell
-    let cellBudget = document.createElement('td');
-    let cellBudgetInput = document.createElement('input');
-    cellBudgetInput.classList.add('budget-input');
-    cellBudgetInput.classList.add('budget-cell-input');
-    cellBudget.appendChild(n);
-    cellBudget.appendChild(cellBudgetInput);
-    tableRow.appendChild(cellBudget);
-
-    // third cell
-    let cellEdit = document.createElement('td');
-    tableRow.appendChild(cellEdit);
-    let editButton = document.createElement('button');
-    cellEdit.appendChild(editButton);
-    let editButtonI = document.createElement('i');
-    editButtonI.setAttribute('class', 'fa fa-pencil-square-o');
-    editButton.appendChild(editButtonI);
-
-    // fourth cell
-    let cellDelete = document.createElement('td');
-    tableRow.appendChild(cellDelete);
-    let deleteButton = document.createElement('button');
-    let deleteButtonI = document.createElement('i');
-    deleteButtonI.setAttribute('class', 'fa fa-trash');
-    cellDelete.appendChild(deleteButton);
-    deleteButton.appendChild(deleteButtonI);
-    cellBudgetInput.type = 'number';
-    cellBudgetInput.value = x;
-    cellItemP.innerHTML = firstLetter + smallLetters;
-
-    // adding new row
-    tableBody.appendChild(tableRow);
-    let s = cellBudgetInput.value;
-
-    // function to edit row
+    if (price < 10 && price % 5 !== 0) {
+        alert('Input a value in multiples of 5 greater than 10')
+    } else {
+        inputItem.value = '';
+        inputBudget.value = '';
+        tableBody.innerHTML += newRow;
+        t = t + parseInt(price);
+        totalInput.value = n.innerHTML + t;
+        sN = tableBody.childElementCount;
+        if (sN !== 0) {
+            totalDiv.style.display = 'flex';
+        }
+        totalItems.value = sN;
+        
+    }
     let i = 0;
-    function editRow() {
-        if (i === 0) {
-            let item = cellItemP.innerHTML;
-            cellItemP.replaceWith(cellItemInput);
-            cellItemInput.value = item;
-            editButtonI.setAttribute('class', 'fa fa-floppy-o');
-            i = 1;
+    function editRow(edit) {
+        
+        let editIcon = edit.querySelector('i');
+        let editTableRow = edit.closest('.table-row');
+        let editCellName = editTableRow.querySelector('.item-name');
+        let changeItemName = editTableRow.querySelector('.change-item');
+        let editCellBudget = editTableRow.querySelector('.item-budget');
+        let changeItemBudget = editTableRow.querySelector('.change-budget');
+        if (editIcon.classList.contains('fa-pencil-square-o')) {
+            editIcon.className = 'fa fa-floppy-o';
+            editCellName.style.display = 'none';
+            changeItemName.style.display = 'block';
+            editCellBudget.style.display = 'none';
+            changeItemBudget.style.display = 'inline';
         } else {
-            editButtonI.setAttribute('class', 'fa fa-pencil-square-o');
-            cellItemInput.replaceWith(cellItemP);
-            cellItemP.innerHTML = cellItemInput.value;
-            t = t - parseInt(s);
-            s = cellBudgetInput.value;
-            t = t + parseInt(s);
-            i = 0;
+            editIcon.className = 'fa fa-pencil-square-o';
+            changeItemName.style.display = 'none';
+            editCellName.style.display = 'block';
+            changeItemBudget.style.display = 'none';
+            editCellBudget.style.display = 'inline';
+            name = changeItemName.value;
+            editCellName.innerText = name;
+            t = t - parseInt(price);
+            price = changeItemBudget.value;
+            editCellBudget.innerText = price;
+            t = t + parseInt(price);
+            budgetArr.forEach((budgetArrItem) => {
+                if (Array.from(editTableRow.parentNode.children).indexOf(editTableRow) === budgetArr.indexOf(budgetArrItem)) {
+                    budgetArrItem.objName = name;
+                    budgetArrItem.objPrice = price;
+                    localStorage.setItem('budgetItemsArr', JSON.stringify(budgetArr))
+                }
+            })
         }
         totalInput.value = n.innerHTML + t;
     }
-    // console.log(tableBody.childElementCount);
 
     // function to delete row
-    function deleteRow() {
-        deleteButton.closest('tr').remove();
-        t = t - parseInt(s);
-        s = cellBudgetInput.value;
+    function deleteRow(deleteButton) {
+        let deleteTableRow = deleteButton.closest('.table-row');
+        price = deleteTableRow.querySelector('.item-budget').innerText;
+        budgetArr.forEach((budgetArrItem) => {
+            if (Array.from(deleteTableRow.parentNode.children).indexOf(deleteTableRow) === budgetArr.indexOf(budgetArrItem)) {
+                budgetArr.splice(Array.from(deleteTableRow.parentNode.children).indexOf(deleteTableRow), 1);
+                localStorage.setItem('budgetItemsArr', JSON.stringify(budgetArr))
+            } 
+        })
+        deleteTableRow.remove();
+        t = t - parseInt(price);
         if (tableBody.hasChildNodes()) {
             totalDiv.style.display = 'flex';
         } else {
@@ -161,28 +162,51 @@ function newRow() {
         }
         totalInput.value = n.innerHTML + t;
     }
-    t = t + parseInt(s);
-    totalInput.value = n.innerHTML + t;
-    editButton.addEventListener('click', function (event) {
-        editRow();
+    const editBtns = tableBody.querySelectorAll('.edit-btn'),
+        deleteBtns = tableBody.querySelectorAll('.delete-btn');
+    editBtns.forEach((editBtn) => {
+        editBtn.addEventListener('click', () => {
+            editRow(editBtn);
+        })
     })
-    deleteButton.addEventListener('click', function (event) {
-        deleteRow();
-        sN = tableBody.childElementCount;
-        totalItems.value = sN;
+    deleteBtns.forEach((deleteBtn) => {
+        deleteBtn.addEventListener('click', () => {
+            deleteRow(deleteBtn);
+            sN = tableBody.childElementCount;
+            totalItems.value = sN;
+        })
     })
 }
 
-form.addEventListener('submit', function (event) {
-    newRow();
-    totalDiv.style.display = 'flex';
-    sN = tableBody.childElementCount;
-    totalItems.value = sN;
-    event.preventDefault();
-    inputItem.value = '';
-    inputBudget.value = '';
+budgetArr.forEach((budgetArrItem) => {
+    name = budgetArrItem.objName;
+    price = budgetArrItem.objPrice;
+    createNewTableRow(name, price);
 })
-clearBtn.addEventListener('click', function (event) {
+
+const newTableRow = () => {
+    let price = inputBudget.value,
+    y = inputItem.value,
+        firstLetter = y[0].toUpperCase(),
+        smallLetters = y.slice(1),
+        name = firstLetter + smallLetters;
+    createNewTableRow(name, price);
+    budgetObj = {
+        objName: name,
+        objPrice: price,
+    }
+    budgetArr.push(budgetObj);
+    localStorage.setItem('budgetItemsArr', JSON.stringify(budgetArr))
+
+
+}
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    newTableRow();
+})
+clearBtn.addEventListener('click', () => {
+    localStorage.removeItem('budgetItemsArr');
+    budgetArr.splice(0);
     while (tableBody.hasChildNodes()) {
         tableBody.removeChild(tableBody.childNodes[0]);
     }

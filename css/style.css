@@ -26,6 +26,7 @@ body {
     background-color: var(--primary);
     color: var(--txt-color);
     font-family: var(--font-family);
+    transition: all ease-in-out 1s;
 }
 h1 {
     text-align: center;
@@ -80,6 +81,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     border-radius: 10px;
+    transition: all ease-in-out 1s;
 }
 .add-item-div label {
     padding: 10px 5px;
@@ -124,6 +126,7 @@ table {
     width: 100%;
     text-align: center;
     overflow: scroll;
+    transition: all ease-in-out 1s;
 }
 table button {
     background-color: transparent;
@@ -146,18 +149,15 @@ th {
     font-size: 18px;
     color: var(--txt-color);
 }
-.budget-input {
+.change-item,
+.change-budget {
+    border-radius: 0;
     border: none;
     outline: none;
-    font-size: 18px;
+    display: none;
+    border-bottom: 1px solid var(--spare);
 }
-.budget-item-input {
-    max-width: 100px;
-    text-align: center;
-}
-.budget-cell-input {
-    width: 50px;
-}
+
 .total-div {
     font-size: 18px;
     font-weight: bold;
