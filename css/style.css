@@ -242,6 +242,17 @@ th {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
+    outline: none;
+}
+.total-div-btn:hover {
+    transform: scale(1.02);
+}
+.total-div-btn:active {
+    transform: scale(1.005);
+}
+.txt-link {
+    color: inherit;
+    text-decoration: none;
 }
 label {
     padding: 5px;
@@ -265,16 +276,7 @@ label {
 }
 .fa-whatsapp {
     color: #25D366;
-    /* color: #ffffff; */
-    /* background-color: #25D366; */
 }
-/* .total-div button {
-    background-color: var(--sec);
-    color: var(--txt-color);
-    padding: 5px 15px;
-    font-size: 18px;
-    font-weight: bold;
-} */
 @media (max-width: 550px) {
     .container {
         padding: 15px;

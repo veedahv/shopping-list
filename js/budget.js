@@ -29,33 +29,12 @@ const form = document.querySelector('form'),
 
 
 let budgetArr = [],
-    itemArr = [
-        {
-            objName: 'House',
-            objPrice: 10000,
-        },
-        {
-            objName: 'Pork',
-            objPrice: 550,
-        },
-        {
-            objName: 'Fish',
-            objPrice: 700,
-        },
-        {
-            objName: 'Mat',
-            objPrice: 1000,
-        }
-    ],
     t = 0,
     i = 0,
     sN = 1;
     let msgTxt;
 
 currency.innerHTML = '&#8358;';
-
-// currency.innerHTML = '&#65505;';
-
 
 if (savedBudgetArr) {
     savedBudgetArr.forEach((savedBudgetArrItem) => {
@@ -68,11 +47,6 @@ const sortTable = () => {
         tableBody.removeChild(tableBody.childNodes[0]);
     }
     t = 0;
-    // itemArr.forEach((arrItem) => {
-    //     name = arrItem.objName;
-    //     price = arrItem.objPrice;
-    //     createNewTableRow(name, price);
-    // })
     budgetArr.forEach((arrItem) => {
         name = arrItem.objName;
         price = arrItem.objPrice;
@@ -254,15 +228,9 @@ const createNewTableRow = (name, price) => {
 budgetArr.forEach((budgetArrItem) => {
     name = budgetArrItem.objName;
     price = budgetArrItem.objPrice;
-    // itemArr.push(budgetArrItem);
     createNewTableRow(name, price);
     localStorage.setItem('budgetItemsArr', JSON.stringify(budgetArr));
 })
-// itemArr.forEach((arrayItem) => {
-//     name = arrayItem.objName;
-//     price = arrayItem.objPrice;
-//     createNewTableRow(name, price);
-// })
 const compareItemAsc = (a, b) => {
     // Use toUpperCase() to ignore character casing
     const itemA = a.objName.toUpperCase();
