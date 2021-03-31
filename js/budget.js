@@ -349,7 +349,7 @@ const printFunc = () => {
     setTimeout(printDone, 200);
 }
 const txtFunc = () => {
-    msgTxt = ``;
+    msgTxt = `Shopping List`;
     let itemSn = 1;
     budgetArr.forEach((budgetArrItem) => {
         name = itemSn + '. ' + budgetArrItem.objName;
