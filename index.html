@@ -72,9 +72,30 @@
                 <table id="budgetTable">
                     <thead>
                         <tr>
-                            <!-- <th>S/N</th> -->
-                            <th>Item</th>
-                            <th>Budget</th>
+                            <th>
+                                Item
+                                <div class="dropdown">
+                                    <button type="button" id="itemSort" class="itemSort sort-btn">
+                                        <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <div class="dropdown-content">
+                                        <a href="#" class="itemSortAsc">Ascending</a>
+                                        <a href="#" class="itemSortDesc">Descending</a>
+                                    </div>
+                                </div>
+                            </th>
+                            <th>
+                                Budget
+                                <div class="dropdown">
+                                    <button type="button" id="priceSort" class="dropbtn priceSort sort-btn">
+                                        <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <div class="dropdown-content">
+                                        <a href="#" class="priceSortDesc">Costlier</a>
+                                        <a href="#" class="priceSortAsc">Cheaper</a>
+                                    </div>
+                                </div>
+                            </th>
                             <th class="printNot">Edit</th>
                             <th class="printNot">Delete</th>
                         </tr>
@@ -92,27 +113,30 @@
                         Estimated budget:
                         <input type="text" name="total" id="total" readonly>
                     </label>
-                    <button id="clear" class="printNot btn">Clear</button>
+                    <button id="clear" class="printNot total-div-btn">Clear</button>
                 </div>
-                <div class="share-div printNot">                    
-                    <button id="savePdf" class="printNot share-btn btn">
+                <div class="share-div printNot">
+                    <button id="savePdf" class="printNot share-btn total-div-btn">
                         <i class="fa fa-floppy-o"></i>
                         <span class="mobile-none"> Save as</span>
-                        <span class="">  pdf</span>                        
+                        <span class=""> pdf</span>
                     </button>
-                    <button id="emailShare" class="printNot share-btn btn">
-                        <i class="fa fa-share-alt"></i> 
+                    <button id="emailShare" class="printNot share-btn total-div-btn">
+                        <i class="fa fa-share-alt"></i>
                         <span class="mobile-none"> Share</span>
                         <span class=""> via </span>
                         <span class="mobile-none">mail</span>
                         <i class="fa fa-envelope"></i>
                     </button>
-                    <button id="whatsAppShare" class="printNot share-btn btn">
-                        <i class="fa fa-share-alt"></i>
-                        <span class="mobile-none"> Share</span>
-                        <span class=""> via</span>
-                        <span class="mobile-none"> WhatsApp</span>
-                        <i class="fa fa-whatsapp"></i>
+                    <button id="whatsAppShare" class="printNot share-btn total-div-btn">
+                        <a data-action="share/whatsapp/share" id="whatsapp-link" class="whatsapp-link" target="_blank"
+                        rel="noopener noreferrer">
+                            <i class="fa fa-share-alt"></i>
+                            <span class="mobile-none"> Share</span>
+                            <span class=""> via</span>
+                            <span class="mobile-none"> WhatsApp</span>
+                            <i class="fa fa-whatsapp"></i>
+                        </a>
                     </button>
                 </div>
             </div>
