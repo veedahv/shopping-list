@@ -357,7 +357,7 @@ const txtFunc = () => {
         msgTxt += `%0a${name} - ${price}`
         itemSn++
     })
-    price = currency.innerHTML + totalInput.value;
+    price = totalInput.value;
     msgTxt += `%0aTotal - ${price}`
 }
 const msgFunc = () => {
