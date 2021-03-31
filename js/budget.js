@@ -17,6 +17,7 @@ const form = document.querySelector('form'),
     emailShare = document.getElementById('emailShare'),
     whatsAppShare = document.getElementById('whatsAppShare'),
     whatsAppLinkTag = document.getElementById('whatsapp-link'),
+    txtLink = document.getElementById('txt-link'),
     totalInput = document.getElementById('total'),
     totalItems = document.getElementById('total-items'),
     totalDiv = document.querySelector('.total-div-contain'),
@@ -49,6 +50,7 @@ let budgetArr = [],
     t = 0,
     i = 0,
     sN = 1;
+    let msgTxt;
 
 currency.innerHTML = '&#8358;';
 
@@ -344,13 +346,11 @@ const printFunc = () => {
         printNotElement.classList.add('print-not-class');
     });
     window.print();
-    setTimeout(printDone, 2000);
+    setTimeout(printDone, 200);
 }
 const txtFunc = () => {
-    let msgTxt = ``;
+    msgTxt = ``;
     let itemSn = 1;
-
-
     budgetArr.forEach((budgetArrItem) => {
         name = itemSn + '. ' + budgetArrItem.objName;
         price = currency.innerHTML + budgetArrItem.objPrice;        
@@ -359,13 +359,19 @@ const txtFunc = () => {
     })
     price = currency.innerHTML + totalInput.value;
     msgTxt += `%0aTotal - ${price}`
-    let whatsAppLink = `https://wa.me/?text=${msgTxt}`;
-    whatsAppLinkTag.href = whatsAppLink;
+}
+const msgFunc = () => {
+    txtFunc();
+    txtLink.href = `sms:?body=${msgTxt}`;
+}
+const whatsAppFunc = () => {
+    txtFunc();
+    whatsAppLinkTag.href =  `https://wa.me/?text=${msgTxt}`;
 }
 
 savePdf.addEventListener('click', printFunc);
-emailShare.addEventListener('click', printFunc);
-whatsAppShare.addEventListener('click', txtFunc);
+emailShare.addEventListener('click', msgFunc);
+whatsAppShare.addEventListener('click', whatsAppFunc);
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     newTableRow();
