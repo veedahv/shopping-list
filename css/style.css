@@ -137,6 +137,10 @@ input {
     color: var(--txt-color);
     font-size: 18px;
     font-family: inherit;
+    outline: none;
+}
+.input-field:focus {
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
 }
 .table-contain {
     width: 100%;
@@ -195,7 +199,6 @@ button {
     font-family: inherit;
     border-radius: 8px;
     border: none;
-    /* color: var(--txt-color); */
 }
 
 td,
