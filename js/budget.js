@@ -299,10 +299,7 @@ const newTableRow = () => {
         objPrice: price,
     }
     budgetArr.push(budgetObj);
-    itemArr.push(budgetObj);
-    localStorage.setItem('budgetItemsArr', JSON.stringify(budgetArr))
-
-
+    localStorage.setItem('budgetItemsArr', JSON.stringify(budgetArr));
 }
 const printDone = () => {
     document.querySelectorAll('.printNot').forEach(printNotElement => {
