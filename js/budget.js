@@ -311,7 +311,7 @@ const printFunc = () => {
         printNotElement.classList.add('print-not-class');
     });
     window.print();
-    setTimeout(printDone, 200);
+    setTimeout(printDone, 700);
 }
 const txtFunc = () => {
     msgTxt = `Shopping List`;
